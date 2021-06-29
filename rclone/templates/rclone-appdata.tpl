@@ -1,14 +1,17 @@
-#!/bin/sh
+#!/bin/sh 
 
 # Variables
 PING_URL=${ping_url}
 
-# tell healthchecks job started
+echo "starting script"
 curl -m 10 --retry 5 $PING_URL/start
 
 # Copy the source to the destination. Doesn't transfer unchanged files. Doesn't delete files from the destination
-msg=$(rclone copy /mnt/user/Backup/appdata azure-remote-backup:appdata --dry-run)
-rclone_exit = $?
+cmd=$(rclone copy /mnt/user/Backup/appdata azure-remote-backup:appdata -v 2>&1)
+exit_code=$?
+
+echo "rclone exit_code = $exit_code"
 
 # tell healthchecks job completed
-curl -m 10 --retry 5 --data-raw "$msg" $PING_URL/$?
+curl -m 10 --retry 5 --data-raw "$cmd" $PING_URL/$exit_code
+echo "script end"

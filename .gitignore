@@ -1,3 +1,6 @@
+# exclude built user_scripts from git
+rclone/user_scripts
+
 # Local .terraform directories
 **/.terraform/*
 

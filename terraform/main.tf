@@ -14,7 +14,9 @@ locals {
 resource "azurerm_resource_group" "example" {
   name     = module.naming.resource_group.name
   location = var.location
-  tags     = local.common_tags
+  tags = merge(local.common_tags, {
+    yor_trace = "fd7d90bf-3fa5-4025-8908-c7c4341fc2d2"
+  })
 }
 
 resource "template_dir" "config" {

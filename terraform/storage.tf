@@ -4,7 +4,9 @@ resource "azurerm_storage_account" "example" {
   location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  tags                     = local.common_tags
+  tags = merge(local.common_tags, {
+    yor_trace = "f26b0a36-8e3e-427d-8526-6409862ceaa7"
+  })
 }
 
 resource "azurerm_storage_container" "example" {

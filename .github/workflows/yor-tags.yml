@@ -1,13 +1,23 @@
-name: yor-tags
-on: [push]
+name: IaC trace
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  yor-job:
+  yor:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        name: Checkout repo
         with:
           fetch-depth: 0
-      - name: Run yor action
+          ref: ${{ github.head_ref }}
+      - name: Run yor action and commit
         uses: bridgecrewio/yor-action@main

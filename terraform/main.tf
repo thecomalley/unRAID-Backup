@@ -36,9 +36,7 @@ resource "azurerm_storage_account" "main" {
 
   network_rules {
     default_action = "Deny"
-    ip_rules = [
-      var.white_list_ip,
-    ]
+    ip_rules       = ["100.0.0.1"]
   }
 
   queue_properties {

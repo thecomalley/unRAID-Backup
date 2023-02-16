@@ -1,4 +1,4 @@
-# unraid-Backup
+# unRAID-Backup
 Backup on-prem data (unRAID) to remote server (Azure Storage) & monitor via Healthchecks.io
 
 ## Requirements
@@ -9,14 +9,6 @@ Backup on-prem data (unRAID) to remote server (Azure Storage) & monitor via Heal
 ## Deployment Steps
 1. Deploy terraform stack, this repo uses Terraform Cloud
 2. unRAID config
-   1. Edit rsync config under rclone settings
-   2. 
-
-3. Upload rsync config and scripts to unRAID server
-   1. Add the contents of `rclone.config.tpl` to `/boot/config/plugins/rclone/.rclone.conf`
-   2. Add the contents of `rclone-appdata.tpl` to `/boot/config/plugins/user.scripts/scripts/rclone-appdata.sh`
-
-## Terraform Docs
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+   1. Copy the contents of `UserScripts/rclone.conf` to the rclone config in the unRAID settings GUI, replacing the variables with the values from the terraform output
+   2. Copy the contents of `UserScripts/rclone-appdata.sh` to the rclone-appdata script in the unRAID settings GUI, again replacing the variables with the values from the terraform output
+3. Test the backup by running the rclone-appdata script in the unRAID settings GUI

@@ -110,14 +110,3 @@ resource "azurerm_log_analytics_storage_insights" "main" {
   storage_account_key  = azurerm_storage_account.main.primary_access_key
   blob_container_names = ["blobExample_ok"]
 }
-
-resource "template_dir" "config" {
-  source_dir      = "../rclone/templates"
-  destination_dir = "../rclone/user_scripts"
-
-  vars = {
-    ping_url           = "${healthchecksio_check.appdata.ping_url}"
-    storage_account    = "${azurerm_storage_account.main.name}"
-    primary_access_key = "${azurerm_storage_account.main.primary_access_key}"
-  }
-}

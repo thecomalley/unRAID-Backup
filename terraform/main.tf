@@ -1,10 +1,11 @@
-module "naming" {
-  source = "Azure/naming/azurerm"
-  suffix = ["unRAID", "backup"]
+locals {
+  containers = [
+    "appdata",
+  ]
 }
 
 resource "azurerm_resource_group" "main" {
-  name     = module.naming.resource_group.name
+  name     = "oma-unRAID-backup-rg"
   location = var.location
   tags = {
     git_commit           = "fd19843a1da521c7c41fbab2aee415d83bcf73f4"
@@ -19,11 +20,36 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_storage_account" "main" {
-  name                     = module.naming.storage_account.name
+  name                     = "omaunraidbackupst"
   resource_group_name      = azurerm_resource_group.main.name
   location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
-  account_replication_type = "LRS"
+  account_replication_type = "ZRS"
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  allow_blob_public_access  = false
+  min_tls_version           = "TLS1_2"
+  enable_https_traffic_only = true
+
+  network_rules {
+    default_action = "Deny"
+    ip_rules       = [
+      var.white_list_ip,
+    ]
+  }
+
+  queue_properties {
+    logging {
+      delete                = true
+      read                  = true
+      write                 = true
+      version               = "1.0"
+      retention_policy_days = 10
+    }
+  }
 
   tags = {
     git_commit           = "fd19843a1da521c7c41fbab2aee415d83bcf73f4"
@@ -38,7 +64,9 @@ resource "azurerm_storage_account" "main" {
 }
 
 resource "azurerm_storage_container" "main" {
-  name                  = "appdata"
+  for_each = toset(local.containers)
+
+  name                  = each.value
   storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "private"
 }
@@ -60,4 +88,23 @@ resource "azurerm_storage_management_policy" "main" {
       }
     }
   }
+}
+
+
+resource "azurerm_log_analytics_workspace" "main" {
+  name                = "oma-unRAID-backup-la"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
+resource "azurerm_log_analytics_storage_insights" "main" {
+  name                = "storage-insights"
+  resource_group_name = azurerm_resource_group.main.name
+  workspace_id        = azurerm_log_analytics_workspace.main.id
+
+  storage_account_id   = azurerm_storage_account.main.id
+  storage_account_key  = azurerm_storage_account.main.primary_access_key
+  blob_container_names = ["blobExample_ok"]
 }

@@ -2,7 +2,7 @@
 Backup on-prem data (unRAID) to remote server (Azure Storage) & monitor via Healthchecks.io
 
 ## Requirements
-- unRAID
+- unRAID Plugins
   - [CA APPDATA BACKUP / RESTORE V3](https://forums.unraid.net/topic/132721-plugin-ca-appdata-backup-restore-v3)
   - [rclone](https://forums.unraid.net/topic/51633-plugin-rclone/)
 

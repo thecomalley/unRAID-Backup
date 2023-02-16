@@ -34,11 +34,6 @@ resource "azurerm_storage_account" "main" {
   min_tls_version                 = "TLS1_2"
   enable_https_traffic_only       = true
 
-  network_rules {
-    default_action = "Deny"
-    ip_rules       = ["100.0.0.1"]
-  }
-
   queue_properties {
     logging {
       delete                = true

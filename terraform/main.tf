@@ -8,9 +8,9 @@ resource "azurerm_resource_group" "main" {
   name     = "oma-unRAID-backup-rg"
   location = var.location
   tags = {
-    git_commit           = "fd19843a1da521c7c41fbab2aee415d83bcf73f4"
+    git_commit           = "2fb5b93159f4b3328d85b78efa2c677ed5d9ad85"
     git_file             = "terraform/main.tf"
-    git_last_modified_at = "2023-02-16 20:49:14"
+    git_last_modified_at = "2023-02-16 21:06:34"
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
@@ -36,7 +36,7 @@ resource "azurerm_storage_account" "main" {
 
   network_rules {
     default_action = "Deny"
-    ip_rules       = [
+    ip_rules = [
       var.white_list_ip,
     ]
   }
@@ -52,9 +52,9 @@ resource "azurerm_storage_account" "main" {
   }
 
   tags = {
-    git_commit           = "fd19843a1da521c7c41fbab2aee415d83bcf73f4"
+    git_commit           = "2fb5b93159f4b3328d85b78efa2c677ed5d9ad85"
     git_file             = "terraform/main.tf"
-    git_last_modified_at = "2023-02-16 20:49:14"
+    git_last_modified_at = "2023-02-16 21:06:34"
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
@@ -97,6 +97,16 @@ resource "azurerm_log_analytics_workspace" "main" {
   resource_group_name = azurerm_resource_group.main.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
+  tags = {
+    git_commit           = "2fb5b93159f4b3328d85b78efa2c677ed5d9ad85"
+    git_file             = "terraform/main.tf"
+    git_last_modified_at = "2023-02-16 21:06:34"
+    git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
+    git_modifiers        = "31399219+thecomalley"
+    git_org              = "thecomalley"
+    git_repo             = "unraid-Backup"
+    yor_trace            = "77a19b3b-8c5d-4ed5-bdf4-93376805ab91"
+  }
 }
 
 resource "azurerm_log_analytics_storage_insights" "main" {
@@ -107,4 +117,14 @@ resource "azurerm_log_analytics_storage_insights" "main" {
   storage_account_id   = azurerm_storage_account.main.id
   storage_account_key  = azurerm_storage_account.main.primary_access_key
   blob_container_names = ["blobExample_ok"]
+  tags = {
+    git_commit           = "2fb5b93159f4b3328d85b78efa2c677ed5d9ad85"
+    git_file             = "terraform/main.tf"
+    git_last_modified_at = "2023-02-16 21:06:34"
+    git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
+    git_modifiers        = "31399219+thecomalley"
+    git_org              = "thecomalley"
+    git_repo             = "unraid-Backup"
+    yor_trace            = "8d98142e-fa9f-490d-a8f7-7e8e4bb4daac"
+  }
 }

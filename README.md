@@ -1,10 +1,7 @@
 # unraid-Backup
 Backup on-prem data (unRAID) to remote server (Azure Storage) & monitor via Healthchecks.io
 
-![diagram](diagrams/homelab_remote_backup.png)
-
 ## Requirements
-- Terraform
 - unRAID
   - plugin: user scripts
   - plugin: rclone

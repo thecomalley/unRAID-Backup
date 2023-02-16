@@ -1,3 +1,6 @@
+name: yor-tags
+on: [push]
+
 jobs:
   yor-job:
     runs-on: ubuntu-latest

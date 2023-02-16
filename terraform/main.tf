@@ -50,9 +50,9 @@ resource "azurerm_storage_account" "main" {
   }
 
   tags = {
-    git_commit           = "3ce46e6082260f2264d1873a42e0489b45ea8d95"
+    git_commit           = "35b64663400d2245b8d92e6aa042cc59352d24ce"
     git_file             = "terraform/main.tf"
-    git_last_modified_at = "2023-02-16 21:13:27"
+    git_last_modified_at = "2023-02-16 21:31:58"
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"

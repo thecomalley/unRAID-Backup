@@ -30,7 +30,7 @@ resource "azurerm_storage_account" "main" {
     type = "SystemAssigned"
   }
 
-  allow_blob_public_access  = false
+  allow_nested_items_to_be_public = false
   min_tls_version           = "TLS1_2"
   enable_https_traffic_only = true
 

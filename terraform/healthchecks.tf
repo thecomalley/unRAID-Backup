@@ -8,7 +8,7 @@ data "healthchecksio_channel" "pushover" {
 
 resource "healthchecksio_check" "appdata" {
   name     = "appdata-azure"
-  desc     = "Monitors backups from unRAID/mnt/user/Backup/appdata to ${azurerm_storage_account.example.name}:appdata"
+  desc     = "Monitors backups from unRAID/mnt/user/Backup/appdata to ${azurerm_storage_account.main.name}:appdata"
   schedule = "0,30 2 * * *"
   tags = [
     "terraform",

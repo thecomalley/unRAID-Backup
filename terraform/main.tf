@@ -31,8 +31,8 @@ resource "azurerm_storage_account" "main" {
   }
 
   allow_nested_items_to_be_public = false
-  min_tls_version           = "TLS1_2"
-  enable_https_traffic_only = true
+  min_tls_version                 = "TLS1_2"
+  enable_https_traffic_only       = true
 
   network_rules {
     default_action = "Deny"
@@ -52,9 +52,9 @@ resource "azurerm_storage_account" "main" {
   }
 
   tags = {
-    git_commit           = "2fb5b93159f4b3328d85b78efa2c677ed5d9ad85"
+    git_commit           = "3ce46e6082260f2264d1873a42e0489b45ea8d95"
     git_file             = "terraform/main.tf"
-    git_last_modified_at = "2023-02-16 21:06:34"
+    git_last_modified_at = "2023-02-16 21:13:27"
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"

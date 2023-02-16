@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "main" {
   resource_group_name      = azurerm_resource_group.main.name
   location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
-  account_replication_type = "ZRS"
+  account_replication_type = "LRS" # Required for Archive Tier
 
   identity {
     type = "SystemAssigned"
@@ -82,7 +82,6 @@ resource "azurerm_storage_management_policy" "main" {
     }
   }
 }
-
 
 resource "azurerm_log_analytics_workspace" "main" {
   name                = "oma-unRAID-backup-la"

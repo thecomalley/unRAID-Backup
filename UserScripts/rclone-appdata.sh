@@ -7,7 +7,7 @@ echo "starting script"
 curl -m 10 --retry 5 $PING_URL/start
 
 # Copy the source to the destination. Doesn't transfer unchanged files. Doesn't delete files from the destination
-cmd=$(rclone copy /mnt/user/Backup/appdata azure-remote-backup:appdata -v 2>&1)
+cmd=$(rclone copy /mnt/user/backups/appdata azure-storage-account:appdata -v 2>&1)
 exit_code=$?
 
 echo "rclone exit_code = $exit_code"

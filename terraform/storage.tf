@@ -6,6 +6,14 @@ resource "azurerm_storage_account" "example" {
   account_replication_type = "LRS"
   tags = merge(local.common_tags, {
     yor_trace = "f26b0a36-8e3e-427d-8526-6409862ceaa7"
+    }, {
+    git_commit           = "0879e5f930fb37e329cbe2536e368df32c2bc9f5"
+    git_file             = "terraform/storage.tf"
+    git_last_modified_at = "2021-06-28 16:37:17"
+    git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
+    git_modifiers        = "31399219+thecomalley"
+    git_org              = "thecomalley"
+    git_repo             = "unraid-Backup"
   })
 }
 

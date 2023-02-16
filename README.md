@@ -3,8 +3,8 @@ Backup on-prem data (unRAID) to remote server (Azure Storage) & monitor via Heal
 
 ## Requirements
 - unRAID
-  - plugin: user scripts
-  - plugin: rclone
+  - [CA APPDATA BACKUP / RESTORE V3](https://forums.unraid.net/topic/132721-plugin-ca-appdata-backup-restore-v3)
+  - []()
 
 ## Usage
 1. Provision infrastrucure via terraform

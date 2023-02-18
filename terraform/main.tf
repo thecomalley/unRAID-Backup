@@ -1,6 +1,7 @@
 locals {
   containers = [
     "appdata",
+    "mariadb"
   ]
 }
 
@@ -109,4 +110,30 @@ resource "azurerm_log_analytics_storage_insights" "main" {
   storage_account_id   = azurerm_storage_account.main.id
   storage_account_key  = azurerm_storage_account.main.primary_access_key
   blob_container_names = ["blobExample_ok"]
+}
+
+
+data "healthchecksio_channel" "signal" {
+  kind = "signal"
+}
+
+data "healthchecksio_channel" "pushover" {
+  kind = "po"
+}
+
+resource "healthchecksio_check" "main" {
+  for_each = toset(local.containers)
+
+  name     = "Backup ${each.value}"
+  desc     = "Monitors backups from /mnt/user/backups/appdata/${each.key} to ${azurerm_storage_account.main.name}:${each.key}"
+  schedule = "0,30 2 * * *" # 2:00 AM and 2:30 AM UTC
+  tags = [
+    "backup",
+    "unraid",
+    "Managed by Terraform",
+  ]
+  channels = [
+    data.healthchecksio_channel.signal.id,
+    data.healthchecksio_channel.pushover.id,
+  ]
 }

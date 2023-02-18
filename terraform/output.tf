@@ -1,6 +1,8 @@
-output "ping_url" {
-  value       = healthchecksio_check.appdata.ping_url
-  description = "Ping URL associated with this check"
+output "ping_urls" {
+  value = {
+    for k, v in healthchecksio_check.main : k => v.ping_url
+  }
+  description = "Healthchecks.io ping URL for each container"
 }
 
 output "storage_account_name" {

@@ -112,11 +112,6 @@ resource "azurerm_log_analytics_storage_insights" "main" {
   blob_container_names = ["blobExample_ok"]
 }
 
-
-data "healthchecksio_channel" "signal" {
-  kind = "signal"
-}
-
 data "healthchecksio_channel" "pushover" {
   kind = "po"
 }

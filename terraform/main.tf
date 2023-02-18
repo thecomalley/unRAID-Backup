@@ -128,9 +128,8 @@ resource "healthchecksio_check" "main" {
   desc     = "Monitors backups from /mnt/user/backups/appdata/${each.key} to ${azurerm_storage_account.main.name}:${each.key}"
   schedule = "0,30 2 * * *" # 2:00 AM and 2:30 AM UTC
   tags = [
-    "backup",
-    "unraid",
-    "Managed by Terraform",
+    "unRAID-backup",
+    "Managed-by-Terraform",
   ]
   channels = [
     data.healthchecksio_channel.signal.id,

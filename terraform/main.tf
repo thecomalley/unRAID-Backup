@@ -127,7 +127,6 @@ resource "healthchecksio_check" "main" {
     "Managed-by-Terraform",
   ]
   channels = [
-    data.healthchecksio_channel.signal.id,
     data.healthchecksio_channel.pushover.id,
   ]
 }

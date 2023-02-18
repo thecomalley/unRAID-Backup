@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "main" {
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
-    git_repo             = "unraid-Backup"
+    git_repo             = "unRAID-Backup"
     yor_trace            = "08bea4dd-4223-4567-946f-01ca6ed4dc77"
   }
 }
@@ -52,7 +52,7 @@ resource "azurerm_storage_account" "main" {
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
-    git_repo             = "unraid-Backup"
+    git_repo             = "unRAID-Backup"
     yor_trace            = "cae566fb-accd-4d2a-bdbb-6d33979fb92d"
   }
 }
@@ -97,7 +97,7 @@ resource "azurerm_log_analytics_workspace" "main" {
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
-    git_repo             = "unraid-Backup"
+    git_repo             = "unRAID-Backup"
     yor_trace            = "77a19b3b-8c5d-4ed5-bdf4-93376805ab91"
   }
 }

@@ -15,7 +15,7 @@ resource "azurerm_key_vault" "main" {
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
-    git_repo             = "unraid-Backup"
+    git_repo             = "unRAID-Backup"
     yor_trace            = "2b9ff7f9-17e9-4522-8521-aba64caaa6b5"
   }
 }
@@ -56,7 +56,7 @@ resource "azurerm_key_vault_key" "main" {
     git_last_modified_by = "31399219+thecomalley@users.noreply.github.com"
     git_modifiers        = "31399219+thecomalley"
     git_org              = "thecomalley"
-    git_repo             = "unraid-Backup"
+    git_repo             = "unRAID-Backup"
     yor_trace            = "5747d287-7b00-42b3-8332-36fafc05c128"
   }
 }
